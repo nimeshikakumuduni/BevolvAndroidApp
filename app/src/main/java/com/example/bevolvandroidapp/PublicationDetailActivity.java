@@ -2,31 +2,32 @@ package com.example.bevolvandroidapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.squareup.picasso.Picasso;
 
 public class PublicationDetailActivity extends AppCompatActivity {
-
-    private TextView  publisherTextView, publisherPlaceTextView, yearTextView, toolBarTitle;
-    private ImageView imageView, backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publication_detail);
 
-        publisherTextView = findViewById(R.id.detailPublisher);
-        publisherPlaceTextView = findViewById(R.id.detailPublicationPlace);
-        yearTextView = findViewById(R.id.detailYear);
-        imageView = findViewById(R.id.detailImage);
-        backButton = findViewById(R.id.back_icon);
-        toolBarTitle = findViewById(R.id.previous_topic);
+        TextView start = findViewById(R.id.startYear);
+        TextView end = findViewById(R.id.endYear);
+        TextView title = findViewById(R.id.detailTitle);
+        TextView publisher = findViewById(R.id.detailPublisher);
+        TextView placeOfPublication = findViewById(R.id.detailPlaceOfPublication);
+        TextView city = findViewById(R.id.detailCity);
+        TextView country = findViewById(R.id.detailCountry);
+        TextView language = findViewById(R.id.detailLang);
+        TextView holdingType = findViewById(R.id.detailHolding);
+        ImageView imageView = findViewById(R.id.detailImage);
+        ImageView backButton = findViewById(R.id.back_icon);
 
 
         Intent intent = getIntent();
@@ -34,11 +35,19 @@ public class PublicationDetailActivity extends AppCompatActivity {
             Publication publication = intent.getParcelableExtra("publication");
 
             if (publication != null) {
-                publisherTextView.setText(publication.getPublisher());
-                publisherPlaceTextView.setText(publication.getPlaceOfPublication());
-                yearTextView.setText(String.valueOf(publication.getStartYear()));
+                int startYearValue = publication.getStartYear();
+                start.setText(startYearValue != 0 ? String.valueOf(startYearValue) : "N/A");
+                int endYearValue = publication.getEndYear();
+                end.setText(endYearValue != 0 ? String.valueOf(endYearValue) : "N/A");
+                title.setText(publication.getTitle());
+                publisher.setText(publication.getPublisher().replaceAll("[\\[\\]]", ""));
+                placeOfPublication.setText(publication.getPlaceOfPublication());
+                city.setText(String.valueOf(publication.getCity()).replaceAll("[\\[\\]]", ""));
+                country.setText(publication.getCountry());
+                language.setText(String.valueOf(publication.getLanguage()).replaceAll("[\\[\\]]", ""));
+                holdingType.setText(String.valueOf(publication.getNote()).replaceAll("[\\[\\]]", ""));
 
-                Picasso.get().load(publication.getImageUrl())
+                Picasso.get().load(publication.generateRandomImageUrl())
                         .placeholder(R.drawable.prev)
                         .error(R.drawable.error)
                         .into(imageView);
@@ -51,12 +60,7 @@ public class PublicationDetailActivity extends AppCompatActivity {
             finish();
         }
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateToHomePage();
-            }
-        });
+        backButton.setOnClickListener(view -> navigateToHomePage());
 
     }
     private void navigateToHomePage() {

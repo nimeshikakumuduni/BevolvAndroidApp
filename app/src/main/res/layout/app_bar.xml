@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@color/dark_blue">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <RelativeLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_blue"
         android:padding="16dp">
@@ -15,19 +14,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@drawable/baseline_arrow_back_24"></ImageView>
+            android:src="@drawable/baseline_arrow_back_24"
+            android:contentDescription="@string/back_arrow" />
 
         <TextView
+            android:id="@+id/previous_topic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/back_icon"
-            android:text="Publications"
+            android:text="@string/publications"
             android:textColor="@color/lavender"
-            android:id="@+id/previous_topic"
-            android:textSize="20sp"
-            android:textStyle="bold"></TextView>
+            android:textSize="26sp" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">BevolvAndroidApp</string>
+    <string name="publish_image">publish_image</string>
+    <string name="end">End:</string>
+    <string name="start">Start:</string>
+    <string name="title">Title:</string>
+    <string name="publisher">Publisher:</string>
+    <string name="place_of_publication">Place of Publication:</string>
+    <string name="city">City:</string>
+    <string name="country">Country:</string>
+    <string name="language">Language:</string>
+    <string name="holding_type">Holding Type:</string>
+    <string name="publications">Publications</string>
+    <string name="back_arrow">back_arrow</string>
+    <string name="note">Notes:</string>
 </resources>
