@@ -35,10 +35,12 @@ public class PublicationAdapter extends ArrayAdapter<Publication> {
         ImageView imageView = convertView.findViewById(R.id.listImage);
 
         titleTextView.setText(publication.getPublisher());
-        publisherTextView.setText(publication.getPlaceOfPublication());
-        Picasso.get().load(publication.getImageUrl()).into(imageView);
+        publisherTextView.setText(publication.getPublisher());
+        Picasso.get().load(publication.getImageUrl())
+                .placeholder(R.drawable.prev)
+                .error(R.drawable.error)
+                .into(imageView);
 
         return convertView;
     }
 }
-

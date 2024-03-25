@@ -8,6 +8,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -33,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Publication publication = adapter.getItem(position);
                 Intent intent = new Intent(MainActivity.this, PublicationDetailActivity.class);
-                intent.putExtra("publication", (CharSequence) publication);
+                intent.putExtra("publication", publication);
                 startActivity(intent);
             }
         });
+
+
 
         fetchData();
     }
