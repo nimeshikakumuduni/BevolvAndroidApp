@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PublicationDetailActivity">
-
-    <TextView
-        android:id="@+id/detailPublisher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Place of Publication"
-        android:layout_marginStart="10dp"
-        android:textSize="16sp" />
+    <include layout="@layout/app_bar"></include>
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,7 +15,8 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/lavender"
         android:text="Publication Details"
-        android:textSize="16dp"
+        android:layout_gravity="center"
+        android:textSize="26dp"
         android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
@@ -51,7 +45,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/publicationDetail"
+        android:id="@+id/detailPublisher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
